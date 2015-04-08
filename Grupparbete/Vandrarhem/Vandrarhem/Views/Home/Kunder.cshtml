@@ -1,0 +1,57 @@
+﻿@model IEnumerable<VandrarhemDbAccess.Kund>
+
+@{
+    ViewBag.Title = "Kunder";
+}
+
+<h2>Kunder</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ForNamn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EfterNamn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Personummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Epost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForNamn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EfterNamn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Personummer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Epost)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.KundId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.KundId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KundId })
+        </td>
+    </tr>
+}
+
+</table>

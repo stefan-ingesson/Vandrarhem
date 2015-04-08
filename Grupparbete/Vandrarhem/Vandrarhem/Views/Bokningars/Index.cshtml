@@ -1,0 +1,45 @@
+﻿@model IEnumerable<VandrarhemDbAccess.Bokningar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InCheckning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UtCheckning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Betalt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InCheckning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UtCheckning)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Betalt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BokningsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BokningsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BokningsId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model VandrarhemDbAccess.Bokningar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bokningar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InCheckning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InCheckning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UtCheckning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UtCheckning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Betalt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Betalt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BokningsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

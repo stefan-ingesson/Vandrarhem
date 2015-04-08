@@ -1,0 +1,64 @@
+﻿@model VandrarhemDbAccess.Kund
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Kund</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ForNamn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForNamn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EfterNamn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EfterNamn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Personummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Personummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Epost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Epost)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

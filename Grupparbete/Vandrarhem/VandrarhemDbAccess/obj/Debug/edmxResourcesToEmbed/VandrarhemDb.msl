@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VandrarhemSQLModelStoreContainer" CdmEntityContainer="VandrarhemSQLEntities">
+    <EntitySetMapping Name="Bokningars">
+      <EntityTypeMapping TypeName="VandrarhemSQLModel.Bokningar">
+        <MappingFragment StoreEntitySet="Bokningar">
+          <ScalarProperty Name="BokningsId" ColumnName="BokningsId" />
+          <ScalarProperty Name="InCheckning" ColumnName="InCheckning" />
+          <ScalarProperty Name="UtCheckning" ColumnName="UtCheckning" />
+          <ScalarProperty Name="Betalt" ColumnName="Betalt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kunds">
+      <EntityTypeMapping TypeName="VandrarhemSQLModel.Kund">
+        <MappingFragment StoreEntitySet="Kund">
+          <ScalarProperty Name="KundId" ColumnName="KundId" />
+          <ScalarProperty Name="ForNamn" ColumnName="ForNamn" />
+          <ScalarProperty Name="EfterNamn" ColumnName="EfterNamn" />
+          <ScalarProperty Name="Personummer" ColumnName="Personummer" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Epost" ColumnName="Epost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KundBoknings">
+      <EntityTypeMapping TypeName="VandrarhemSQLModel.KundBokning">
+        <MappingFragment StoreEntitySet="KundBokning">
+          <ScalarProperty Name="KundBokningsId" ColumnName="KundBokningsId" />
+          <ScalarProperty Name="KundId" ColumnName="KundId" />
+          <ScalarProperty Name="BokningsId" ColumnName="BokningsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rums">
+      <EntityTypeMapping TypeName="VandrarhemSQLModel.Rum">
+        <MappingFragment StoreEntitySet="Rum">
+          <ScalarProperty Name="RumsId" ColumnName="RumsId" />
+          <ScalarProperty Name="RumsNummer" ColumnName="RumsNummer" />
+          <ScalarProperty Name="AntalBaddar" ColumnName="AntalBaddar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RumsBoknings">
+      <EntityTypeMapping TypeName="VandrarhemSQLModel.RumsBokning">
+        <MappingFragment StoreEntitySet="RumsBokning">
+          <ScalarProperty Name="RumsBokningsId" ColumnName="RumsBokningsId" />
+          <ScalarProperty Name="RumsId" ColumnName="RumsId" />
+          <ScalarProperty Name="BokningsId" ColumnName="BokningsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BokningsVies">
+      <EntityTypeMapping TypeName="VandrarhemSQLModel.BokningsVy">
+        <MappingFragment StoreEntitySet="BokningsVy">
+          <ScalarProperty Name="UtCheckning" ColumnName="UtCheckning" />
+          <ScalarProperty Name="InCheckning" ColumnName="InCheckning" />
+          <ScalarProperty Name="KundId" ColumnName="KundId" />
+          <ScalarProperty Name="AntalBaddar" ColumnName="AntalBaddar" />
+          <ScalarProperty Name="RumsNummer" ColumnName="RumsNummer" />
+          <ScalarProperty Name="EfterNamn" ColumnName="EfterNamn" />
+          <ScalarProperty Name="ForNamn" ColumnName="ForNamn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

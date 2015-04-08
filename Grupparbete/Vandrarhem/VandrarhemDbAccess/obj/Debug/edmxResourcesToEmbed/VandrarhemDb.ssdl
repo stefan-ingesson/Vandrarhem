@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VandrarhemSQLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bokningar">
+    <Key>
+      <PropertyRef Name="BokningsId" />
+    </Key>
+    <Property Name="BokningsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InCheckning" Type="datetime" Nullable="false" />
+    <Property Name="UtCheckning" Type="datetime" Nullable="false" />
+    <Property Name="Betalt" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kund">
+    <Key>
+      <PropertyRef Name="KundId" />
+    </Key>
+    <Property Name="KundId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ForNamn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EfterNamn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Personummer" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Telefon" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Epost" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KundBokning">
+    <Key>
+      <PropertyRef Name="KundBokningsId" />
+    </Key>
+    <Property Name="KundBokningsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KundId" Type="int" Nullable="false" />
+    <Property Name="BokningsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rum">
+    <Key>
+      <PropertyRef Name="RumsId" />
+    </Key>
+    <Property Name="RumsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RumsNummer" Type="int" Nullable="false" />
+    <Property Name="AntalBaddar" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RumsBokning">
+    <Key>
+      <PropertyRef Name="RumsBokningsId" />
+    </Key>
+    <Property Name="RumsBokningsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RumsId" Type="int" Nullable="false" />
+    <Property Name="BokningsId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'VandrarhemSQL.dbo.BokningsVy' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BokningsVy">
+    <Key>
+      <PropertyRef Name="ForNamn" />
+      <PropertyRef Name="EfterNamn" />
+      <PropertyRef Name="RumsNummer" />
+      <PropertyRef Name="AntalBaddar" />
+      <PropertyRef Name="InCheckning" />
+      <PropertyRef Name="UtCheckning" />
+    </Key>
+    <Property Name="ForNamn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EfterNamn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RumsNummer" Type="int" Nullable="false" />
+    <Property Name="AntalBaddar" Type="int" Nullable="false" />
+    <Property Name="KundId" Type="int" Nullable="false" />
+    <Property Name="InCheckning" Type="datetime" Nullable="false" />
+    <Property Name="UtCheckning" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_KundBokning_Bokningar">
+    <End Role="Bokningar" Type="Self.Bokningar" Multiplicity="1" />
+    <End Role="KundBokning" Type="Self.KundBokning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bokningar">
+        <PropertyRef Name="BokningsId" />
+      </Principal>
+      <Dependent Role="KundBokning">
+        <PropertyRef Name="BokningsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KundBokning_Kund">
+    <End Role="Kund" Type="Self.Kund" Multiplicity="1" />
+    <End Role="KundBokning" Type="Self.KundBokning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kund">
+        <PropertyRef Name="KundId" />
+      </Principal>
+      <Dependent Role="KundBokning">
+        <PropertyRef Name="KundId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RumsBokning_Bokningar">
+    <End Role="Bokningar" Type="Self.Bokningar" Multiplicity="1" />
+    <End Role="RumsBokning" Type="Self.RumsBokning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bokningar">
+        <PropertyRef Name="BokningsId" />
+      </Principal>
+      <Dependent Role="RumsBokning">
+        <PropertyRef Name="BokningsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RumsBokning_Rum">
+    <End Role="Rum" Type="Self.Rum" Multiplicity="1" />
+    <End Role="RumsBokning" Type="Self.RumsBokning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rum">
+        <PropertyRef Name="RumsId" />
+      </Principal>
+      <Dependent Role="RumsBokning">
+        <PropertyRef Name="RumsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VandrarhemSQLModelStoreContainer">
+    <EntitySet Name="Bokningar" EntityType="Self.Bokningar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kund" EntityType="Self.Kund" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KundBokning" EntityType="Self.KundBokning" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rum" EntityType="Self.Rum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RumsBokning" EntityType="Self.RumsBokning" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BokningsVy" EntityType="Self.BokningsVy" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BokningsVy].[ForNamn] AS [ForNamn], 
+    [BokningsVy].[EfterNamn] AS [EfterNamn], 
+    [BokningsVy].[RumsNummer] AS [RumsNummer], 
+    [BokningsVy].[AntalBaddar] AS [AntalBaddar], 
+    [BokningsVy].[KundId] AS [KundId], 
+    [BokningsVy].[InCheckning] AS [InCheckning], 
+    [BokningsVy].[UtCheckning] AS [UtCheckning]
+    FROM [dbo].[BokningsVy] AS [BokningsVy]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_KundBokning_Bokningar" Association="Self.FK_KundBokning_Bokningar">
+      <End Role="Bokningar" EntitySet="Bokningar" />
+      <End Role="KundBokning" EntitySet="KundBokning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KundBokning_Kund" Association="Self.FK_KundBokning_Kund">
+      <End Role="Kund" EntitySet="Kund" />
+      <End Role="KundBokning" EntitySet="KundBokning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RumsBokning_Bokningar" Association="Self.FK_RumsBokning_Bokningar">
+      <End Role="Bokningar" EntitySet="Bokningar" />
+      <End Role="RumsBokning" EntitySet="RumsBokning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RumsBokning_Rum" Association="Self.FK_RumsBokning_Rum">
+      <End Role="Rum" EntitySet="Rum" />
+      <End Role="RumsBokning" EntitySet="RumsBokning" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

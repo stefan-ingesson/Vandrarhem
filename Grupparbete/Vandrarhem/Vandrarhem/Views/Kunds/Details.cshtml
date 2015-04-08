@@ -1,0 +1,58 @@
+﻿@model VandrarhemDbAccess.Kund
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kund</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ForNamn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForNamn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EfterNamn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EfterNamn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Personummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Personummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Epost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Epost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KundId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

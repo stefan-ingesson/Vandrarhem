@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VandrarhemSQLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bokningar">
+    <Key>
+      <PropertyRef Name="BokningsId" />
+    </Key>
+    <Property Name="BokningsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InCheckning" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UtCheckning" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Betalt" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="KundBoknings" Relationship="Self.FK_KundBokning_Bokningar" FromRole="Bokningar" ToRole="KundBokning" />
+    <NavigationProperty Name="RumsBoknings" Relationship="Self.FK_RumsBokning_Bokningar" FromRole="Bokningar" ToRole="RumsBokning" />
+  </EntityType>
+  <EntityType Name="Kund">
+    <Key>
+      <PropertyRef Name="KundId" />
+    </Key>
+    <Property Name="KundId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ForNamn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EfterNamn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Personummer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Epost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="KundBoknings" Relationship="Self.FK_KundBokning_Kund" FromRole="Kund" ToRole="KundBokning" />
+  </EntityType>
+  <EntityType Name="KundBokning">
+    <Key>
+      <PropertyRef Name="KundBokningsId" />
+    </Key>
+    <Property Name="KundBokningsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KundId" Type="Int32" Nullable="false" />
+    <Property Name="BokningsId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bokningar" Relationship="Self.FK_KundBokning_Bokningar" FromRole="KundBokning" ToRole="Bokningar" />
+    <NavigationProperty Name="Kund" Relationship="Self.FK_KundBokning_Kund" FromRole="KundBokning" ToRole="Kund" />
+  </EntityType>
+  <EntityType Name="Rum">
+    <Key>
+      <PropertyRef Name="RumsId" />
+    </Key>
+    <Property Name="RumsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RumsNummer" Type="Int32" Nullable="false" />
+    <Property Name="AntalBaddar" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="RumsBoknings" Relationship="Self.FK_RumsBokning_Rum" FromRole="Rum" ToRole="RumsBokning" />
+  </EntityType>
+  <EntityType Name="RumsBokning">
+    <Key>
+      <PropertyRef Name="RumsBokningsId" />
+    </Key>
+    <Property Name="RumsBokningsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RumsId" Type="Int32" Nullable="false" />
+    <Property Name="BokningsId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bokningar" Relationship="Self.FK_RumsBokning_Bokningar" FromRole="RumsBokning" ToRole="Bokningar" />
+    <NavigationProperty Name="Rum" Relationship="Self.FK_RumsBokning_Rum" FromRole="RumsBokning" ToRole="Rum" />
+  </EntityType>
+  <Association Name="FK_KundBokning_Bokningar">
+    <End Role="Bokningar" Type="Self.Bokningar" Multiplicity="1" />
+    <End Role="KundBokning" Type="Self.KundBokning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bokningar">
+        <PropertyRef Name="BokningsId" />
+      </Principal>
+      <Dependent Role="KundBokning">
+        <PropertyRef Name="BokningsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RumsBokning_Bokningar">
+    <End Role="Bokningar" Type="Self.Bokningar" Multiplicity="1" />
+    <End Role="RumsBokning" Type="Self.RumsBokning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bokningar">
+        <PropertyRef Name="BokningsId" />
+      </Principal>
+      <Dependent Role="RumsBokning">
+        <PropertyRef Name="BokningsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KundBokning_Kund">
+    <End Role="Kund" Type="Self.Kund" Multiplicity="1" />
+    <End Role="KundBokning" Type="Self.KundBokning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kund">
+        <PropertyRef Name="KundId" />
+      </Principal>
+      <Dependent Role="KundBokning">
+        <PropertyRef Name="KundId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RumsBokning_Rum">
+    <End Role="Rum" Type="Self.Rum" Multiplicity="1" />
+    <End Role="RumsBokning" Type="Self.RumsBokning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rum">
+        <PropertyRef Name="RumsId" />
+      </Principal>
+      <Dependent Role="RumsBokning">
+        <PropertyRef Name="RumsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VandrarhemSQLEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bokningars" EntityType="Self.Bokningar" />
+    <EntitySet Name="Kunds" EntityType="Self.Kund" />
+    <EntitySet Name="KundBoknings" EntityType="Self.KundBokning" />
+    <EntitySet Name="Rums" EntityType="Self.Rum" />
+    <EntitySet Name="RumsBoknings" EntityType="Self.RumsBokning" />
+    <AssociationSet Name="FK_KundBokning_Bokningar" Association="Self.FK_KundBokning_Bokningar">
+      <End Role="Bokningar" EntitySet="Bokningars" />
+      <End Role="KundBokning" EntitySet="KundBoknings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RumsBokning_Bokningar" Association="Self.FK_RumsBokning_Bokningar">
+      <End Role="Bokningar" EntitySet="Bokningars" />
+      <End Role="RumsBokning" EntitySet="RumsBoknings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KundBokning_Kund" Association="Self.FK_KundBokning_Kund">
+      <End Role="Kund" EntitySet="Kunds" />
+      <End Role="KundBokning" EntitySet="KundBoknings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RumsBokning_Rum" Association="Self.FK_RumsBokning_Rum">
+      <End Role="Rum" EntitySet="Rums" />
+      <End Role="RumsBokning" EntitySet="RumsBoknings" />
+    </AssociationSet>
+    <EntitySet Name="BokningsVies" EntityType="VandrarhemSQLModel.BokningsVy" />
+  </EntityContainer>
+  <EntityType Name="BokningsVy">
+    <Key>
+      <PropertyRef Name="ForNamn" />
+      <PropertyRef Name="EfterNamn" />
+      <PropertyRef Name="RumsNummer" />
+      <PropertyRef Name="AntalBaddar" />
+      <PropertyRef Name="InCheckning" />
+      <PropertyRef Name="UtCheckning" />
+    </Key>
+    <Property Name="ForNamn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EfterNamn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RumsNummer" Type="Int32" Nullable="false" />
+    <Property Name="AntalBaddar" Type="Int32" Nullable="false" />
+    <Property Name="KundId" Type="Int32" Nullable="false" />
+    <Property Name="InCheckning" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UtCheckning" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+</Schema>

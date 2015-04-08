@@ -1,0 +1,10 @@
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\bin\Debug\VandrarhemDbAccess.dll.config
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\bin\Debug\VandrarhemDbAccess.dll
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\bin\Debug\VandrarhemDbAccess.pdb
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\bin\Debug\EntityFramework.dll
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\bin\Debug\EntityFramework.SqlServer.dll
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\bin\Debug\EntityFramework.xml
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\bin\Debug\EntityFramework.SqlServer.xml
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\obj\Debug\VandrarhemDbAccess.csprojResolveAssemblyReference.cache
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\obj\Debug\VandrarhemDbAccess.dll
+E:\Skolarbete\Projektbaserad webbutveckling\Grupparbete\Vandrarhem\VandrarhemDbAccess\obj\Debug\VandrarhemDbAccess.pdb
